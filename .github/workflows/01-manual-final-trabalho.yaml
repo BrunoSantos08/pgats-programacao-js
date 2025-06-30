@@ -1,0 +1,27 @@
+name: 'Execução Manual - Trabalho Final da Disciplina CI'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: Instalação do Yarn
+        run: npm install -g yarn
+
+      - name: Instalação das dependências
+        run: yarn
+
+      - name: Instalação do Mocha
+        run: yarn add --dev mocha
+
+      - name: Execução dos Testes do Trabalho Final
+        run: npx mocha ./testes/trabalho-final.js
